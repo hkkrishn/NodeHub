@@ -14,7 +14,22 @@ const http = require('http');
 //Request Listener, request call back function
 const rqListener=(req,res)=>{
     //this function which will take in the req and res objects as args
-    console.log(req)
+    // console.log(req)
+    //headers are metadata that are included in the req obj
+    console.log(req.url)
+    //process.exit()
+    //hard shutdown of our server
+
+    //response object
+    res.setHeader('Content-Type','text/html')
+    //write html to reutrn from the server
+    res.write('<html>')
+    res.write('<head><title>My First Page</title></head>')
+    res.write('<body><h1>Hello World</h1></body>')
+    res.write('</html>')
+    //end of writing
+    res.end()
+    //This sends back a response with an html file iside of it
 
 }
 
