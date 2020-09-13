@@ -17,6 +17,19 @@ const rqListener=(req,res)=>{
     // console.log(req)
     //headers are metadata that are included in the req obj
     console.log(req.url)
+    const url = req.url
+    if(url === "/"){
+        res.setHeader('Content-Type','text/html')
+        //write html to reutrn from the server
+        res.write('<html>')
+        res.write('<head><title>Node server app</title></head>')
+        //send post request on clicking button to /message
+        res.write('<body><form action="/message" method="POST"><input type="text" name="message"><button type="submit">Send</button></form></body>');
+        res.write('</html>')
+        //end of writing
+        // the return statement is not required but it exits the function
+         return res.end()
+    }
     //process.exit()
     //hard shutdown of our server
 
