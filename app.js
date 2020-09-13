@@ -13,6 +13,7 @@ const http = require('http');
 
 //file package core module
 const fs = require('fs');
+const { parse } = require('path');
 
 //Request Listener, request call back function
 const rqListener=(req,res)=>{
@@ -42,7 +43,29 @@ const rqListener=(req,res)=>{
     //within we are going to redirect the user back to / and create a new file with the response in it
 
     if(url === "/message" && method === 'POST'){
-        fs.writeFileSync('message.txt','DUMMY Text');
+        const body = []
+        //register event listener, the data event is fired whenever a new chunk is ready to be read
+        //takes a function to act on the data
+        req.on('data',(chunk)=>{
+            // we are parsing the req body
+            //push all chunks to the body app
+            body.push(chunk)
+
+        })
+        //this ecent listener runs when the body has been finished parsing
+        req.on('end',()=>{
+            //buffer the chunks
+            //this creates a buffer and all the chunks we have parsed to it
+            const parsedBody = Buffer.concat(body).toString();//convert to string since the body is text
+            console.log(parsedBody)
+            const message = parsedBody.split('=')[1]
+            fs.writeFileSync('message.txt',message);
+
+            // the input data should be present within this console log.
+
+        })
+
+
         //allows node to add meta information to file, status 302 stands for redirection
         res.statusCode = 302;
         res.setHeader('Location','/')
