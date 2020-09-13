@@ -11,6 +11,9 @@
 // without ./ it will look for it globally
 const http = require('http');
 
+//file package core module
+const fs = require('fs');
+
 //Request Listener, request call back function
 const rqListener=(req,res)=>{
     //this function which will take in the req and res objects as args
@@ -18,6 +21,7 @@ const rqListener=(req,res)=>{
     //headers are metadata that are included in the req obj
     console.log(req.url)
     const url = req.url
+    const method = req.method
     if(url === "/"){
         res.setHeader('Content-Type','text/html')
         //write html to reutrn from the server
@@ -34,6 +38,16 @@ const rqListener=(req,res)=>{
     //hard shutdown of our server
 
     //response object
+
+    //within we are going to redirect the user back to / and create a new file with the response in it
+
+    if(url === "/message" && method === 'POST'){
+        fs.writeFileSync('message.txt','DUMMY Text');
+        //allows node to add meta information to file, status 302 stands for redirection
+        res.statusCode = 302;
+        res.setHeader('Location','/')
+        return res.end()
+    }
     res.setHeader('Content-Type','text/html')
     //write html to reutrn from the server
     res.write('<html>')
