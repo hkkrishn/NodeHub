@@ -1,0 +1,11 @@
+//Author:Harikrishnan Kuppusamykrishnan
+//Project: NodeHub
+//Date: 08/06/2020
+//Description: Explanation of blocking vs non blocking code
+
+//-------------------------------------------------------------------------------------------------------------------//
+
+fs.writeFileSync vs fs.writeFile
+
+writeFileSync is synchronous and will block whatever code until it finishes running.
+with non blocking code you can pass a callback function and node.js implicilty registers an event listener for us

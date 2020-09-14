@@ -1,0 +1,20 @@
+//Author:Harikrishnan Kuppusamykrishnan
+//Project: NodeHub
+//Date: 08/06/2020
+//Description: Information about streams and buffers
+
+Streams and buffers
+
+Incoming reqs are streams
+streams are ongoing processes and are read in chunks
+
+                                                        |-----------------Buffer-----------------------|
+Stream --> Request Body Part 1--->Request Body Part 2--->Request Body Part 3--->Request Body Part 4---> Fully Parsed
+
+This is done so we can work on individual chunk wihtout having to wait for the entire file have to get Parsed
+This is how Node handles all requests
+
+We organize incoming request via a buffers
+a Buffer is like a bus stop, it is a construct that allows you hold and work on multiple chunks before they
+are released you code works with buffers
+

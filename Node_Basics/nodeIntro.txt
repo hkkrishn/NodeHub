@@ -1,0 +1,38 @@
+//Author:Harikrishnan Kuppusamykrishnan
+//Project: NodeHub
+//Date: 08/06/2020
+//Description: Node.js deep dive and theory
+
+//-------------------------------------------------------------------------------------------------------------------//
+
+
+Single Thread,Event Loop and Blocking Code
+
+Node.js uses only one js Thread
+How is it able to handle multiple requests?
+Performance
+
+Single JS Thread --> fs --> this does not complete instantly
+
+so
+
+Event Loop
+The event loop is started when we run the Code
+The event loop is responsible for running code in regards to callbacks
+The event loop only handles operations that are fast or computationally non intensive
+
+computationally intensive tasks are sent to the worker pool, which is also started by Node.js
+The worker pool is multi threaded and closely intertwined with the operating system
+Once the worker is done it will trigger the callback and hence the event loop will execute the appropriate callback
+
+The Event Loop
+
+1.At the beggining of each iteration it checks if there are any Timer callbacks to execute e.g setTimeout,setInterval execute
+2.Pending Callbacks, Execute 1/0 related callbacks, could be network,file or disk operations
+3.Poll, this is the phase where Node.js will look for new I/0 events and otherwise
+4. Check, setImmediate callbacks are executed here, setImmediate is faster than setTimeout but will only execute after all
+open callbacks are executed.
+5. Will execute close event callbacks, close events are handled separately
+6. process.exit only if there are no callbacks or there are no open event listener, it reduces the counter by one
+7. This is never exited in a normal node server program
+8.
