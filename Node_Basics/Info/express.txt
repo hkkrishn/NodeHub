@@ -1,0 +1,35 @@
+//Author:Harikrishnan Kuppusamykrishnan
+//Project: NodeHub
+//Date: 08/06/2020
+//Description: Intro to express.js
+
+
+//--------------------------
+
+What and why
+Server Logic is Complex!
+Express logic helps with Body Parsing
+You want to focus on your business logic, not nitty gritting details
+We use a framework for heavy lifting
+
+Alternatives to express.js
+Vanilla Node.js
+
+
+Express.js is all about middleware
+
+Request-->Middleware((req,res,next))=>{...}-->next()--> Middleware((req,res,next))=>{...}-->res.send()-->Response
+A request will go through multiple blocks and pieces where you can add multiple third party packages.
+
+
+//add middleware
+//use accepts an array of req handlers
+
+//the function passed in will be applied to every incoming request
+//next is a function defined by express.js and has to be executed for the request to travel on to the next middleware
+//app use docs syntax app.use([path,]callback[,callback...])
+//express goes through the file from top to bottom
+//the path or route only indicates what the path has to start with
+//if you dont call next the below middle wares will not be reached
+//as a best practice if you are sending a response you do not want to call next()
+//if you want a middleware to be applied to all req put it on top
