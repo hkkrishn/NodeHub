@@ -11,6 +11,7 @@ const shopRoutes = require('./routes/shop')
 
 const express = require('express')
 const bodyParser = require('body-parser')
+const path = require('path')
 
 
 //make express application
@@ -29,7 +30,7 @@ app.use(shopRoutes)
 
 //if we dont handle the request we need a catch all middleware after all routes
 app.use((req,res,next)=>{
-    res.status(404).send('<h1>Page Not Found</h1>')
+    res.status(404).sendFile(path.join(__dirname,'views','404.html'))
 })
 
 

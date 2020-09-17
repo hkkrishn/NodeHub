@@ -6,8 +6,9 @@
 
 const express = require('express')
 const router = express.Router();
+const path = require('path')
 
-
+const rootDir = require('../util/path')
 router.use('/',(req,res,next)=>{
 
     //send allows us to send a response and allows us to create a body of type any
@@ -23,7 +24,8 @@ router.get('/',(req,res,next)=>{
 
     //send allows us to send a response and allows us to create a body of type any
     //there is no need to set the Header
-    res.send('<h1>Hello from Shop</h1>')
+    //__dirname holds the absolute path to this project folder
+    res.sendFile(path.join(rootDir,'views','shop.html'))
 })
 
 module.exports = router;

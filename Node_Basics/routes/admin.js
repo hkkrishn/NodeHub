@@ -4,9 +4,11 @@
 //Description:route that handles the creation of products that only admin can do
 
 const express = require('express')
+const path = require('path')
 
 //Router is a mini express up that plugs in to the main express app
 
+const rootDir = require('../util/path')
 const router = express.Router();
 
 //add middleware
@@ -30,7 +32,8 @@ router.get('/add-product',(req,res,next)=>{
 
     //send allows us to send a response and allows us to create a body of type any
     //there is no need to set the Header
-    res.send('<form action = "/admin/add-product" method = "POST" ><input type = "text" name = "title"></input><button type = "submit"> Add Product</button></form>')
+    //grab the html file from the views folder with the absolute path
+    res.sendFile(path.join(rootDir,'views','add-product.html'))
 })
 
 //since /product does not clash with /add-product it wont clash and can be placed before or after
