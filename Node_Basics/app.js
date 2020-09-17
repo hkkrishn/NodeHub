@@ -26,6 +26,9 @@ const app = express();
 //only paths starting with /admin will go into adminRoutes
 //express will omit the /admin when handling the routes in admin.js
 app.use(bodyParser.urlencoded({extended:false}))
+
+//serve files statically,forwards requests to the public folder
+app.use(express.static(path.join(__dirname,'public')))
 app.use('/admin',adminRoutes)
 app.use(shopRoutes)
 
