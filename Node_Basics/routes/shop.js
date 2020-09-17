@@ -9,6 +9,7 @@ const router = express.Router();
 const path = require('path')
 
 const rootDir = require('../util/path')
+console.log(rootDir)
 router.use('/',(req,res,next)=>{
 
     //send allows us to send a response and allows us to create a body of type any

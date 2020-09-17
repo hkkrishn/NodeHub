@@ -25,6 +25,7 @@ const app = express();
 //if our paths in our router paths start with the same prefix we can parse it out
 //only paths starting with /admin will go into adminRoutes
 //express will omit the /admin when handling the routes in admin.js
+app.use(bodyParser.urlencoded({extended:false}))
 app.use('/admin',adminRoutes)
 app.use(shopRoutes)
 

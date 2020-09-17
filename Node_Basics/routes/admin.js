@@ -40,6 +40,8 @@ router.get('/add-product',(req,res,next)=>{
 //app.get allows us to filter for get reqs and app.posts for post requests
 //the same path can be used if the methods differ
 router.post('/add-product',(req,res,next)=>{
+
+    console.log('product added:')
     console.log(req.body)
     //express function to redirect page to path
     res.redirect('/')
