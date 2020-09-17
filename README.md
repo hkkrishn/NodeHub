@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
 
 ![HARI SOFTWARE ENGINEERING](https://i.ibb.co/1TtX82d/Full-Color-1280x1024-72dpi.png)
 ## Purpose of project
