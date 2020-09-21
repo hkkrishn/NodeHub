@@ -9,7 +9,11 @@ const path = require('path')
 //Router is a mini express up that plugs in to the main express app
 
 const rootDir = require('../util/path')
-const router = express.Router();
+const router = express.Router()
+
+//array to hold products
+const products = [];
+
 
 //add middleware
 //use accepts an array of req handlers
@@ -33,7 +37,15 @@ router.get('/add-product',(req,res,next)=>{
     //send allows us to send a response and allows us to create a body of type any
     //there is no need to set the Header
     //grab the html file from the views folder with the absolute path
-    res.sendFile(path.join(rootDir,'views','add-product.html'))
+
+    res.render('add-product',{
+        prods:products,
+        pageTitle:'Add Product',
+        path:'/admin/add-product',
+        hasProducts:products.length>0,
+        activeShop:true,
+        productCSS:true
+    })
 })
 
 //since /product does not clash with /add-product it wont clash and can be placed before or after
@@ -42,6 +54,8 @@ router.get('/add-product',(req,res,next)=>{
 router.post('/add-product',(req,res,next)=>{
 
     console.log('product added:')
+    //push object into products array
+    products.push({title:req.body.title})
     console.log(req.body)
     //express function to redirect page to path
     res.redirect('/')
@@ -50,4 +64,5 @@ router.post('/add-product',(req,res,next)=>{
 
 })
 
-module.exports = router;
+exports.routes = router;
+exports.products = products;
