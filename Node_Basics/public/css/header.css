@@ -5,7 +5,7 @@
   --text-secondary: #ececec;
   --bg-primary: #23232e;
   --bg-secondary: #141418;
-  --transition-speed: 600ms;
+  --transition-speed: 0.2s;
 }
 
 body {
@@ -32,11 +32,18 @@ main {
   padding: 1rem;
 }
 
+
 .navbar {
   position: fixed;
   background-color: var(--bg-primary);
   transition: width 600ms ease;
   overflow: scroll;
+  transition:.2s;
+}
+
+.navbar:hover~ main{
+  margin-left: 200px;
+
 }
 
 .navbar-nav {
@@ -229,3 +236,4 @@ main {
     border-radius:3px;
 
 }
+
