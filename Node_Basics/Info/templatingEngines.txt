@@ -1,0 +1,14 @@
+Template Engines
+
+Template engines replace placholders or snippets with actual HTML context this is
+similar to JSX in React which allows the React Engine to act as the Templating Engine.
+This takes the dynamic content into account, this occurs on the server and a dynamic
+HTML file is generated on the fly which is then sent back to the users, this all happens
+or should happen on the server.
+
+3 popular Template Engines
+EJS = <p> <%=name%></p> = uses normal HTML and plain JS in templates
+Pug = p#{name} = uses minimal HTMl and custom template language
+Handlebars most sim to JSX =  <p> {{name}} </p> = uses normal HTML and custom template language
+
+

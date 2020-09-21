@@ -6,8 +6,9 @@
 //---------
 
 //Routes
-const adminRoutes = require('./routes/admin')
+const adminData = require('./routes/admin')
 const shopRoutes = require('./routes/shop')
+
 
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -16,6 +17,10 @@ const path = require('path')
 
 //make express application
 const app = express();
+
+//register templating engine
+app.set('view engine','ejs')
+app.set('views','views')
 
 //allow body parsing
 //this function registers a middleware and call next but before
@@ -29,12 +34,13 @@ app.use(bodyParser.urlencoded({extended:false}))
 
 //serve files statically,forwards requests to the public folder
 app.use(express.static(path.join(__dirname,'public')))
-app.use('/admin',adminRoutes)
+//adminData is the object that holds the routes and the products array
+app.use('/admin',adminData.routes)
 app.use(shopRoutes)
 
 //if we dont handle the request we need a catch all middleware after all routes
 app.use((req,res,next)=>{
-    res.status(404).sendFile(path.join(__dirname,'views','404.html'))
+    res.status(404).render('404',{pageTitle:'Page Not Found'})
 })
 
 
