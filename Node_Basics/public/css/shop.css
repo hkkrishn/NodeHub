@@ -8,3 +8,35 @@
     height:250px;
     width:350px;
 }
+
+.in-progress-container{
+    text-align: center;
+}
+
+
+#gear_1{
+    animation: gear 9s infinite linear;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+#gear_2{
+    animation: gear 6s infinite linear;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+#gear_3{
+    animation: gear 3s infinite linear;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+@keyframes gear{
+    from{
+        transform: rotateZ(0deg);
+    }
+    to{
+        transform: rotateZ(360deg);
+    }
+}
