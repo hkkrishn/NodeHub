@@ -16,7 +16,7 @@ body {
 }
 
 body::-webkit-scrollbar {
-  width: 0.25rem;
+  width: 0rem;
 }
 
 body::-webkit-scrollbar-track {
@@ -37,12 +37,12 @@ main {
   position: fixed;
   background-color: var(--bg-primary);
   transition: width 600ms ease;
-  overflow: scroll;
+
   transition:.2s;
 }
 
 .navbar:hover~ main{
-  margin-left: 200px;
+  margin-left: 250px;
 
 }
 
@@ -237,3 +237,10 @@ main {
 
 }
 
+.link-text .active{
+  background: linear-gradient(90deg,#ff8a00,#e52e71);
+    text-shadow: none;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
