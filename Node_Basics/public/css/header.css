@@ -46,6 +46,10 @@ main {
 
 }
 
+.navbar:hover~.hari-logo-container{
+  margin-left:250px;
+}
+
 .navbar-nav {
   list-style: none;
   padding: 0;
