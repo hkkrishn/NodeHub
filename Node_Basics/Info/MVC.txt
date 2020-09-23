@@ -8,6 +8,7 @@ Models = represent you data in your code, like saving fetching data or in memory
 Views =  represent what the user sees in the App, decoupled from application code.
 Controllers = Connecting your model to your Views,contains the in between logic. This also includes Routes.
 
-In an App, which incorporates Express.js the controllers are split across Middleware functions
+In an App, which incorporates Express.js the controllers are split across Middleware functions.
+
 
 
